@@ -1,0 +1,23 @@
+{
+  "name": "launchx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ragmatical/LaunchX.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ragmatical/LaunchX/issues"
+  },
+  "homepage": "https://github.com/Ragmatical/LaunchX#readme"
+}
