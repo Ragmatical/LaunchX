@@ -4,13 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-<<<<<<< HEAD
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "socket.io": "^2.1.1"
-=======
-    "express": "^4.16.3"
->>>>>>> acb0cff3ca1555d803081cd73393f6f77d4a64af
   },
   "devDependencies": {},
   "scripts": {
