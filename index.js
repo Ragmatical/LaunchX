@@ -15,10 +15,25 @@ var port = process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
 
 function startServer() {
-  app.get('/', (req, res, next) => {
-    var filePath = path.join(__dirname, '/home.html')
-    res.sendFile(filePath)
-  })
-}
+    app.get('/', (req, res, next) => {
+      var filePath = path.join(__dirname, '/home.html')
+      res.sendFile(filePath)
+    })
+    server.on('listening', () => {
+
+
+    /* Determining what the server is listening for */
+    var addr = server.address(),
+      bind = typeof addr === 'string' ?
+      'pipe ' + addr :
+      'port ' + addr.port;
+
+    /* Outputs to the console that the webserver is ready to start listenting to requests */
+    console.log('Listening on ' + bind);
+  });
+
+  /* Tells the server to start listening to requests from defined port */
+    server.listen(port);
+  }
 
 startServer()
