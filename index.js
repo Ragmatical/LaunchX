@@ -2,9 +2,13 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var Io = require('socket.io')
 var http = require('http');
+<<<<<<< HEAD
+var crypto = require('crypto');
+=======
 var usermodel = require('./user.js').getModel();
 var crypto = require('crypto');
 var mongoose = require('mongoose')
+>>>>>>> acb0cff3ca1555d803081cd73393f6f77d4a64af
 var path = require('path');
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy
