@@ -15,12 +15,41 @@ var port = process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
 
 function startServer() {
-    app.get('/', (req, res, next) => {
-      var filePath = path.join(__dirname, '/home.html')
-      res.sendFile(filePath)
-    })
-    server.on('listening', () => {
 
+  app.use(express.static(path.join(__dirname, 'public')));
+
+  app.get('/', (req, res, next) => {
+    var filePath = path.join(__dirname, '/home.html')
+    res.sendFile(filePath)
+  })
+
+  app.get('/profile.html', (req, res, next) => {
+    var filePath = path.join(__dirname, 'profile.html')
+    res.sendFile(filePath)
+  })
+
+  app.get('/login.html', (req, res, next) => {
+    var filePath = path.join(__dirname, 'login.html')
+    res.sendFile(filePath)
+  })
+
+  app.post('/', (req, res, next) => {
+    console.log(req.body);
+    res.send('OK');
+  });
+
+  app.post('/profile.html', (req, res, next) => {
+    console.log(req.body);
+    res.send('OK');
+  })
+
+  app.post('/login.html', (req, res, next) => {
+    console.log(req.body);
+    res.send('OK')
+  })
+
+
+  server.on('listening', () => {
 
     /* Determining what the server is listening for */
     var addr = server.address(),
@@ -33,7 +62,7 @@ function startServer() {
   });
 
   /* Tells the server to start listening to requests from defined port */
-    server.listen(port);
-  }
+  server.listen(port);
+}
 
 startServer()
