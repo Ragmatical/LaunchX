@@ -33,6 +33,11 @@ function startServer() {
     res.sendFile(filePath)
   })
 
+  app.get('/about.html', (req, res, next) => {
+    var filePath = path.join(__dirname, 'about.html')
+    res.sendFile(filePath)
+  })
+
   app.post('/', (req, res, next) => {
     console.log(req.body);
     res.send('OK');
@@ -43,7 +48,15 @@ function startServer() {
     res.send('OK');
   })
 
-  app.post('/login.html', (req, res, next) => {
+  app.post('/login', (req, res, next) => {
+    passport.authenticate('local', function(err, user) {
+      if (err) return res.send({
+        error: err
+      });
+    })
+  });
+
+  app.post('/about.html', (req, res, next) => {
     console.log(req.body);
     res.send('OK')
   })
