@@ -4,15 +4,22 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "bootstrap": "^3.3.7",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "jquery": "^3.3.1",
     "jsdom": "^12.2.0",
+    "nltk": "0.0.1",
+    "numpy": "0.0.1",
+    "os": "^0.1.1",
+    "pandas": "0.0.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "pprint": "0.0.1",
     "puppeteer": "^1.9.0",
-    "socket.io": "^2.1.1"
+    "random": "^2.0.12",
+    "re": "^0.1.4",
+    "socket.io": "^2.1.1",
+    "stopwords": "0.0.9"
   },
   "devDependencies": {},
   "scripts": {

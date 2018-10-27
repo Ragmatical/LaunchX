@@ -12,15 +12,6 @@ var app = express();
 var server = http.createServer(app);
 var io = Io(server)
 var port = process.env.PORT ? parseInt(process.env.PORT) : 8080;
-var bootstrap = require('bootstrap')
-var jsdom = require("jsdom").env("", function(err, window) {
-    if (err) {
-        console.error(err);
-        return;
-    }
-
-    var jQuery = require("jquery")(window);
-});
 
 
 function startServer() {
