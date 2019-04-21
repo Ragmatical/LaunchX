@@ -3,18 +3,170 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="main.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* The KEY! to revealing parallax image on scroll is to set the background image to attachment "fixed"! */
+    .fixed-bg {
+      min-height: 100vh;
+      background-size: cover;
+      background-attachment: scrolling;
+      background-position: center center;
+    }
+
+    .scrolling-bg {
+      padding: 20%;
+      font-size: 5vw;
+    }
+
+    .bg-1 {
+      background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1412/cd-background-1.jpg);
+    }
+
+    .bg-2 {
+      background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1412/cd-background-2.jpg);
+    }
+
+    .bg-3 {
+      background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1412/cd-background-3.jpg);
+    }
+
+    /* center single headline on images */
+
+    .center-type {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2.5vw;
+      font-family: sans-serif;
+    }
+
+
+    /* fixed nav bar links as buttons...*/
+    ul {
+      position: fixed;
+      z-index: 999;
+      width: 100%;
+      height: 100px;
+      background-color: black;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      list-style-type: none;
+    }
+
+    a {
+      color: white;
+      font-family: sans-serif;
+      text-decoration: none;
+      text-align: center;
+      text-transform: uppercase;
+      border: 1px solid white;
+      padding: 10px 20px;
+      margin: 20px;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="navbar">
-    <a href="/">Home</a>
-    <a href='/profile.html'>Profile</a>
-    <a href='/login.html'>Login</a>
-    <a class='active' href='/about.html'>About</a>
+  <nav>
+    <ul>
+      <li><a href="#start">Home</a></li>
+      <li><a href="#pg1">Mission Statement</a></li>
+      <li><a href="#pg3">About</a></li>
+      <li><a href="#end">Buy</a></li>
+    </ul>
+  </nav>
+
+  <div id="start" class="fixed-bg bg-1 center-type">
+    <h1>Alternate Fixed &amp; Scroll Backgrounds</h1>
   </div>
+
+  <div id="pg1" class="scrolling-bg">
+    <h2>Mission Statement</h2>
+    <p>
+      We are Lucidity. Sometimes, we get distracted.
+      Hope this helps! ;P
+    </p>
+  </div>
+
+  <div id="pg3" class="scrolling-bg">
+    <h2>
+      About us
+    </h2>
     <div>
-      We are ... blah
+      Justin
     </div>
+    <div>
+      Juno
+    </div>
+    <div>
+      Tasha
+    </div>
+
+  </div>
+
+  <div id="end" class="fixed-bg bg-3 center-type">
+    <h2>
+      Our Product
+    </h2>
+    <div>
+      Demo
+    </div>
+    <div>
+      Pricing(Freemium)
+    </div>
+    <div>
+      Testimonials
+      <div>
+        "My son has become more productive because of Lucidity. Thank you so much."
+        -Juno Kim, on Justin Hou
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Select all links with hashes
+    $('a[href*="#"]')
+      // Remove links that don't actually link to anything
+      .not('[href="#"]')
+      .not('[href="#0"]')
+      .click(function(event) {
+        // On-page links
+        if (
+          location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+          location.hostname == this.hostname
+        ) {
+          // Figure out element to scroll to
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          // Does a scroll target exist?
+          if (target.length) {
+            // Only prevent default if animation is actually gonna happen
+            event.preventDefault();
+            $('html, body').animate({
+              scrollTop: target.offset().top
+            }, 1000, function() {
+              // Callback after animation
+              // Must change focus!
+              var $target = $(target);
+              $target.focus();
+              if ($target.is(":focus")) { // Checking if the target was focused
+                return false;
+              } else {
+                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                $target.focus(); // Set focus again
+              };
+            });
+          }
+        }
+      });
+  </script>
 </body>
 
 </html>
